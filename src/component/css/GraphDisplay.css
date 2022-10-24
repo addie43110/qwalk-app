@@ -1,6 +1,14 @@
 .display {
-    border-radius: 5px;
     background-color: lightblue;
     height: 25rem;
+    border-radius: 5px;
+}
+
+.display-container {
+    height: 30rem;
     width: 45%;
+}
+
+.slider-container {
+    padding: 1rem;
 }
