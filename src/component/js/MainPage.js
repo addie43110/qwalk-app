@@ -14,7 +14,7 @@ export default class MainPage extends React.Component {
     render() {
         return (
             <div className="container">
-                <GraphDisplay/>
+                <GraphDisplay steps={0}/>
                 <Options/>
             </div>
         );
