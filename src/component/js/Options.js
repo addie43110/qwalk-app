@@ -1,7 +1,7 @@
 import React from "react";
-
 import RadioButton from "./RadioButton";
 import TextInput from "./TextInput";
+import Checkbox from "./Checkbox";
 
 export default class Options extends React.Component {
 
@@ -37,7 +37,7 @@ export default class Options extends React.Component {
                 </div>
                 <h2>Cumulative probability?</h2>
                 <div className="cumulative-container">
-                    <RadioButton label="Y/N"/>
+                    <Checkbox label="Y/N"/>
                 </div>
                 <h2>Number of steps</h2>
                 <div className="steps-container">

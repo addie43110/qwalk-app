@@ -1,12 +1,10 @@
-import React from "react";
+const RadioButton = ({defaultChecked, value, name, label}) => {
 
-export default class RadioButton extends React.Component {
-
-    render () {
         return (
             <div>
-                <input type="radio" defaultChecked={this.props.defaultChecked} value={this.props.value} name={this.props.name}/> {this.props.label}
+                <input type="radio" defaultChecked={defaultChecked} value={value} name={name}/> {label}
             </div>
         );
-    }
 }
+
+export default RadioButton;
