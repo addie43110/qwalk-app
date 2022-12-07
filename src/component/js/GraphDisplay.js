@@ -8,11 +8,11 @@ const DEFAULT_STEP_VALUE = 0;
 export default class GraphDisplay extends React.Component {
     render() {
         return (
-            <div className={classes.displayContainer}>
+            <div className={classes["display-container"]}>
                 <div className={classes.display}>
 
                 </div>
-                <div className={classes.sliderContainer}>
+                <div className={classes["slider-container"]}>
                     <Slider 
                         defaultValue={DEFAULT_STEP_VALUE} 
                         step={STEP_SIZE} 
