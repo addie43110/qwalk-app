@@ -10,7 +10,6 @@ export default class MainPage extends React.Component {
 //    value: PropTypes.string,
 //  };
 
-
     render() {
         return (
             <div className="container">
