@@ -1,7 +1,7 @@
 import React from "react";
 //import PropTypes from "prop-types";
 
-import "../css/MainPage.css";
+import classes from "../css/MainPage.module.css";
 import GraphDisplay from "./GraphDisplay";
 import Options from "./Options";
 
@@ -13,7 +13,7 @@ export default class MainPage extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div className={classes.container}>
                 <GraphDisplay steps={0}/>
                 <Options/>
             </div>
