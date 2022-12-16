@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from '@mui/material/Slider';
-import "../css/GraphDisplay.css";
+import classes from "../css/GraphDisplay.module.css"
 
 const SLIDER_NODE_STEP_SIZE = 1;
 const DEFAULT_SLIDER_VALUE = 1;
@@ -11,11 +11,11 @@ const GraphDisplay=(props)=> {
     const sliderNodeCount = steps+SLIDER_NODE_STEP_SIZE;
     
     return (
-        <div className="display-container">
-            <div className="display">
+        <div className={classes["display-container"]}>
+            <div className={classes.display}>
 
             </div>
-            <div className="slider-container">
+            <div className={classes["slider-container"]}>
                 <Slider 
                     defaultValue={DEFAULT_SLIDER_VALUE} 
                     step={SLIDER_NODE_STEP_SIZE} 
@@ -28,5 +28,6 @@ const GraphDisplay=(props)=> {
         </div>
     );
 }
+
 
 export default GraphDisplay;
