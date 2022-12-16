@@ -8,8 +8,7 @@ const MIN_SLIDER_NODE_COUNT = 1;
 
 const GraphDisplay=(props)=> {
     const {steps} = props;
-    const sliderNodeCount = steps+SLIDER_NODE_STEP_SIZE;
-    
+
     return (
         <div className={classes["display-container"]}>
             <div className={classes.display}>
@@ -19,10 +18,10 @@ const GraphDisplay=(props)=> {
                 <Slider 
                     defaultValue={DEFAULT_SLIDER_VALUE} 
                     step={SLIDER_NODE_STEP_SIZE} 
-                    marks 
-                    min={0} 
-                    max={sliderNodeCount} 
-                    disabled={sliderNodeCount === MIN_SLIDER_NODE_COUNT}
+                    marks={steps > 0? true: false}
+                    min={MIN_SLIDER_NODE_COUNT} 
+                    max={steps > 0? steps + SLIDER_NODE_STEP_SIZE: steps} 
+                    disabled={steps === null? true: false}
                 />
             </div>
         </div>
