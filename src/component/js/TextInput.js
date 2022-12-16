@@ -1,13 +1,14 @@
 import React from "react";
 
-export default class TextInput extends React.Component {
+const TextInput = (props) => {
+    const {label} = props;
     
-    render () {
-        return (
-            <div className="textinput-container">
-                <input type="text"/>
-                {this.props.label}
-            </div>
-        );
-    }
+    return (
+        <div className="textinput-container">
+            <input type="text"/>
+            {label}
+        </div>
+    );
 }
+
+export default TextInput;
