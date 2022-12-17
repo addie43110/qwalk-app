@@ -1,11 +1,11 @@
 import React from "react";
 
 const TextInput = (props) => {
-    const {label} = props;
+    const {label, onChangeFunction} = props;
     
     return (
         <div className="textinput-container">
-            <input type="text"/>
+            <input type="text" onChange={onChangeFunction}/>
             {label}
         </div>
     );
