@@ -5,11 +5,11 @@ import NumberInput from "./NumberInput";
 import classes from "../css/Options.module.css";
 
 const LINE = "line";
-const WIDTH = "width";
+const GRID = "grid";
 const CUBE = "cube";
 
 const Options = () => {
-    const [type, setType] = useState(CUBE);
+    const [type, setType] = useState(LINE);
     const [magnitude, setMagnitude] = useState(null);
     const [cumulativeProbability, setCumulativeProbability] = useState(false);
     const [steps, setSteps] = useState(null);
@@ -30,7 +30,7 @@ const Options = () => {
             }
 
             let magnitudeSquared = Math.pow(magnitude, 2);
-            if (type === WIDTH && !isAPowerOfTwo(magnitudeSquared)) {
+            if (type === GRID && !isAPowerOfTwo(magnitudeSquared)) {
                 throw new Error("Invalid magnitude entered. Squared magnitude must be a power of 2.");
             }
 
@@ -50,47 +50,35 @@ const Options = () => {
         return ((value & (value-1)) === 0);
     }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            type: 'line',
-        }
-    }
-
-    types = ['line', 'grid', 'cube'];
-
-    onTypeChange = (event) => {
-        this.setState(prevState => ({
-          ...prevState,
-          type: event.target.value,
-        }));
-    }
-
-    render() {
-        return (
-            <div className="options-container">
-                <h1>Options</h1>
-                <h2>Type</h2>
-                <div className="type-container" onChange={this.onTypeChange}>
-                    {this.types.map(type => <RadioButton defaultChecked={type === LINE} value={type} name={'type'} label={type.charAt(0).toUpperCase() + type.slice(1)} />)}
-                </div>
-                <h2>Dimensions</h2>
-                <div className="dimensions-container">
-                    <TextInput label="length"/>
-                    <TextInput label="width"/>
-                    <TextInput label="height"/>
-                </div>
-                <h2>Cumulative probability?</h2>
-                <div className="cumulative-container">
-                    <Checkbox label="Y/N"/>
-                </div>
-                <h2>Number of steps</h2>
-                <div className="steps-container">
-                    <TextInput label="step(s)"/>
-                </div>
+    return (
+        <div className={classes["options-container"]}>
+            <h1>Options</h1>
+            <h2>Type</h2>
+            <div className={classes["type-container"]}>
+                <RadioButton name={'type'} value={LINE} defaultChecked={true} label={'Line'} onChange={event => setType(event.target.value)}/>
+                <RadioButton name={'type'} value={GRID} defaultChecked={false} label={'Grid'} onChange={event => setType(event.target.value)}/>
+                <RadioButton name={'type'} value={CUBE} defaultChecked={false} label={'Cube'} onChange={event => setType(event.target.value)}/>
             </div>
-        );
-    }
+            <h2>Dimensions</h2>
+            <div className={classes["dimensions-container"]}>
+                <NumberInput 
+                    label="Magnitude" 
+                    onBlurEvent={event => setMagnitude(event.target.value.length > 0? Number(event.target.value): null)}
+                />
+            </div>
+            <h2>Cumulative probability?</h2>
+            <div className={classes["cumulative-container"]}>
+                <Checkbox label="Y/N"/>
+            </div>
+            <h2>Number of steps</h2>
+            <div className={classes["steps-container"]}>
+                <NumberInput 
+                    label="Step(s)" 
+                    onBlurEvent={event => setSteps(event.target.value.length > 0? Number(event.target.value): null)}
+                />
+            </div>
+        </div>
+    );
 }
 
 export default Options;
