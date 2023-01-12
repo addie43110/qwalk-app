@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Checkbox from "./Checkbox";
+import RadioButton from "./RadioButton";
 import NumberInput from "./NumberInput";
 import classes from "../css/Options.module.css";
 
@@ -49,35 +50,47 @@ const Options = () => {
         return ((value & (value-1)) === 0);
     }
 
-    return (
-        <div className={classes["options-container"]}>
-            <h1>Options</h1>
-            <h2>Type</h2>
-            <div className={classes["type-container"]}>
-                <Checkbox label="line"/>
-                <Checkbox label="grid"/>
-                <Checkbox label="cube"/>
+    constructor(props) {
+        super(props);
+        this.state = {
+            type: 'line',
+        }
+    }
+
+    types = ['line', 'grid', 'cube'];
+
+    onTypeChange = (event) => {
+        this.setState(prevState => ({
+          ...prevState,
+          type: event.target.value,
+        }));
+    }
+
+    render() {
+        return (
+            <div className="options-container">
+                <h1>Options</h1>
+                <h2>Type</h2>
+                <div className="type-container" onChange={this.onTypeChange}>
+                    {this.types.map(type => <RadioButton defaultChecked={type === LINE} value={type} name={'type'} label={type.charAt(0).toUpperCase() + type.slice(1)} />)}
+                </div>
+                <h2>Dimensions</h2>
+                <div className="dimensions-container">
+                    <TextInput label="length"/>
+                    <TextInput label="width"/>
+                    <TextInput label="height"/>
+                </div>
+                <h2>Cumulative probability?</h2>
+                <div className="cumulative-container">
+                    <Checkbox label="Y/N"/>
+                </div>
+                <h2>Number of steps</h2>
+                <div className="steps-container">
+                    <TextInput label="step(s)"/>
+                </div>
             </div>
-            <h2>Dimensions</h2>
-            <div className={classes["dimensions-container"]}>
-                <NumberInput 
-                    label="Magnitude" 
-                    onBlurEvent={event => setMagnitude(event.target.value.length > 0? Number(event.target.value): null)}
-                />
-            </div>
-            <h2>Cumulative probability?</h2>
-            <div className={classes["cumulative-container"]}>
-                <Checkbox label="Y/N"/>
-            </div>
-            <h2>Number of steps</h2>
-            <div className={classes["steps-container"]}>
-                <NumberInput 
-                    label="Step(s)" 
-                    onBlurEvent={event => setSteps(event.target.value.length > 0? Number(event.target.value): null)}
-                />
-            </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default Options;
