@@ -1,9 +1,54 @@
-import React from "react";
-import RadioButton from "./RadioButton";
-import TextInput from "./TextInput";
+import React, {useEffect, useState} from "react";
 import Checkbox from "./Checkbox";
+import RadioButton from "./RadioButton";
+import NumberInput from "./NumberInput";
+import classes from "../css/Options.module.css";
 
-export default class Options extends React.Component {
+const LINE = "line";
+const WIDTH = "width";
+const CUBE = "cube";
+
+const Options = () => {
+    const [type, setType] = useState(CUBE);
+    const [magnitude, setMagnitude] = useState(null);
+    const [cumulativeProbability, setCumulativeProbability] = useState(false);
+    const [steps, setSteps] = useState(null);
+
+    useEffect(() => {
+        try {
+            if (magnitude === null || steps === null) {
+                return;
+            }
+
+            if (!Number.isInteger(magnitude) || !Number.isInteger(steps) || magnitude < 1 || steps < 0 || steps > 20) {
+                throw new Error("Invalid parameter(s) entered. Magnitude must be an integer greater than or equal to 1 \
+                    and steps must be a positive integer no larger than 20.");
+            }
+
+            if (type === LINE && !isAPowerOfTwo(magnitude)) {
+                throw new Error("Invalid magnitude entered. Magnitude must be a power of 2.");
+            }
+
+            let magnitudeSquared = Math.pow(magnitude, 2);
+            if (type === WIDTH && !isAPowerOfTwo(magnitudeSquared)) {
+                throw new Error("Invalid magnitude entered. Squared magnitude must be a power of 2.");
+            }
+
+            let magnitudeCubed = Math.pow(magnitude, 3);
+            if (type === CUBE && !isAPowerOfTwo(magnitudeCubed)) {
+                throw new Error("Invalid magnitude entered. Cubed magnitude must be a power of 2.");
+            }
+
+            setMagnitude(magnitude);
+            setSteps(steps);
+        } catch (e) {
+            console.error(`${e.message}`)
+        }
+    }, [type, magnitude, steps]);
+
+    const isAPowerOfTwo = (value) => {
+        return ((value & (value-1)) === 0);
+    }
 
     constructor(props) {
         super(props);
@@ -27,7 +72,7 @@ export default class Options extends React.Component {
                 <h1>Options</h1>
                 <h2>Type</h2>
                 <div className="type-container" onChange={this.onTypeChange}>
-                    {this.types.map(type => <RadioButton defaultChecked={type === 'line'} value={type} name={'type'} label={type.charAt(0).toUpperCase() + type.slice(1)} />)}
+                    {this.types.map(type => <RadioButton defaultChecked={type === LINE} value={type} name={'type'} label={type.charAt(0).toUpperCase() + type.slice(1)} />)}
                 </div>
                 <h2>Dimensions</h2>
                 <div className="dimensions-container">
@@ -47,3 +92,5 @@ export default class Options extends React.Component {
         );
     }
 }
+
+export default Options;
