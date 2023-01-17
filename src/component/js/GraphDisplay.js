@@ -28,7 +28,7 @@ const GraphDisplay=(props)=>{
             <div className={classes.display}>
                 <div className="test"></div>
                 <img src="/api/get_qw_test" alt="plot"></img>
-            </div>
+            </div> 
             <div className={classes["slider-container"]}>
                 <StepSlider steps={steps}/>
             </div>

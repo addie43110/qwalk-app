@@ -9,6 +9,8 @@ import matplotlib as mpl
 from qiskit.visualization import plot_histogram
 from qiskit.quantum_info import Statevector
 
+mpl.use('Agg')
+
 # QUANTUM HELPERS
 def increment(n_adder):
     qc = QuantumCircuit(n_adder)
@@ -76,7 +78,7 @@ def round_remove_zeroes(np_dict):
 def qwalk2D():
     n_dir = 2
     n_pos = 6
-    iterations = 10
+    iterations = 2
     qwalk_reg = QuantumRegister(n_dir+n_pos+1)
 
     # allocating qubits
@@ -143,7 +145,5 @@ def create_plots2D(states):
         # customizing plot
         plt.title("Current States")
         pixel_plot = plt.imshow(data, cmap='hot')
-
         plt.colorbar(pixel_plot)
-
         plt.savefig('./images/new_plot.png')

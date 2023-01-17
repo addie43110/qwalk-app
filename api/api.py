@@ -1,5 +1,5 @@
 import time
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_file
 import io
 
 import random
@@ -36,7 +36,9 @@ def get_graph_test():
 @app.route('/api/get_qw_test', methods=['GET'])
 def get_qw_test():
     create_plots2D(qwalk2D())
-    return render_template('untitled1.html', name = 'new_plot', url ='./images/new_plot.png')
+
+    return send_file('images/new_plot.png', mimetype='image/gif')
+    #return render_template('untitled1.html', name = 'new_plot', url ='./images/new_plot.png')
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
