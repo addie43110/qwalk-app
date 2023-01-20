@@ -34,7 +34,27 @@ def decrement(n_sub):
     U_dec.name = "U$_{dec}$"
     return U_dec
 
-def shift2D(n_dir, n_pos):    
+def shift1D(n_pos):
+    n_dir = 1
+
+    qr = QuantumRegister(n_dir+n_pos)
+    q_dir = qr[:n_dir]
+    q_pos = qr[n_dir:]
+    qc = QuantumCircuit(qr)
+
+    # if direction is 0 (LEFT)
+    qc.x(q_dir)
+    qc.append(decrement(n_pos).control(n_dir), q_dir+q_pos)
+    qc.x(q_dir)
+    # if direction is 1 (RIGHT)
+    qc.append(increment(n_pos).control(n_dir), q_dir+q_pos)
+
+    U_shift = qc.to_gate()
+    U_shift.name = "U$_{shift}$"
+    return U_shift
+
+def shift2D(n_pos):
+    n_dir = 2 
     HALF_N = ceil(n_pos/2)
 
     qr = QuantumRegister(n_dir+n_pos)
@@ -62,6 +82,62 @@ def shift2D(n_dir, n_pos):
     U_shift.name = "U$_{shift}$"
     return U_shift
 
+def shift3D(n_pos):
+    n_dir = 3
+    LEN_ONE_SIDE_OF_CUBE = n_pos
+    HALF_LEN = ceil(LEN_ONE_SIDE_OF_CUBE / 2)
+    
+    qr = QuantumRegister(n_dir+n_pos)
+    q_dir = qr[:n_dir]
+    q_pos = qr[n_dir:]
+    
+    qc = QuantumCircuit(qr)
+    
+    # if direction is 000 (RIGHT)
+    qc.x(q_dir)
+    qc.append(increment(HALF_LEN).control(3), q_dir+q_pos[-HALF_LEN:])
+    qc.x(q_dir)
+    
+    # if direction is 001 (DOWN)
+    qc.x(q_dir[0])
+    qc.x(q_dir[1])
+    qc.append(increment(HALF_LEN).control(3), q_dir+q_pos[HALF_LEN:-HALF_LEN])
+    qc.x(q_dir[0])
+    qc.x(q_dir[1])
+    
+    # if direction is 010 (LEFT)
+    qc.x(q_dir[0])
+    qc.x(q_dir[2])
+    qc.append(decrement(HALF_LEN).control(3), q_dir+q_pos[-HALF_LEN:])
+    qc.x(q_dir[0])
+    qc.x(q_dir[2])
+    
+    # if direction is 011 (UP)
+    qc.x(q_dir[0])
+    qc.append(decrement(HALF_LEN).control(3), q_dir+q_pos[HALF_LEN:-HALF_LEN])
+    qc.x(q_dir[0])
+    
+    # if direction is 100 (BACK)
+    qc.x(q_dir[1])
+    qc.x(q_dir[2])
+    qc.append(increment(HALF_LEN).control(3), q_dir+q_pos[:HALF_LEN])
+    qc.x(q_dir[1])
+    qc.x(q_dir[2])
+    
+    # if direction is 101 (FORWARD)
+    qc.x(q_dir[1])
+    qc.append(decrement(HALF_LEN).control(3), q_dir+q_pos[:HALF_LEN])
+    qc.x(q_dir[1])
+    
+    # if direction is 110
+    
+    # if direction is 111
+    
+    
+    U_shift = qc.to_gate()
+    U_shift.name = "U$_{shift}$"
+    return U_shift
+
 def round_remove_zeroes(np_dict):
     for a,d in np.ndenumerate(np_dict):
         for k,v in d.items():
@@ -75,10 +151,9 @@ def round_remove_zeroes(np_dict):
                 
     return new_dict
 
-def qwalk2D():
-    n_dir = 2
-    n_pos = 6
-    iterations = 2
+def qwalk2D(dim, magnitude, iterations):
+    n_dir = dim
+    n_pos = magnitude
     qwalk_reg = QuantumRegister(n_dir+n_pos+1)
 
     # allocating qubits
@@ -110,7 +185,13 @@ def qwalk2D():
         '''controlled shift where ancilla is control
         only shift if we are in a non-target state'''
         qwalk_circ.x(q_anc)
-        qwalk_circ.append(shift2D(n_dir, n_pos).control(1), [anc_ind]+dir_ind+pos_ind)
+
+        if (dim == 1): # if 1D walk, use 1D shift
+            qwalk_circ.append(shift1D(n_pos).control(1), [anc_ind]+dir_ind+pos_ind)
+        elif (dim == 2): # if 2D walk, use 2D shift
+            qwalk_circ.append(shift2D(n_pos).control(1), [anc_ind]+dir_ind+pos_ind)
+        else:
+            qwalk_circ.append(shift3D(n_pos).control(1), [anc_ind]+dir_ind+pos_ind)
 
         # add state to list
         states.append(Statevector.from_instruction(qwalk_circ))
