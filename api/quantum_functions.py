@@ -209,8 +209,9 @@ def create_plots2D(states):
     # PLOTTING FOR 8 x 8 GRID
     sum_data = np.zeros((8,8))
     meta_states = []
+    counter = 0
 
-    states = states[len(states)-1:]
+    # states = states[len(states)-1:]
 
     for state in states:
         
@@ -227,4 +228,5 @@ def create_plots2D(states):
         plt.title("Current States")
         pixel_plot = plt.imshow(data, cmap='hot')
         plt.colorbar(pixel_plot)
-        plt.savefig('./images/new_plot.png')
+        plt.savefig('./images/dist'+str(counter)+'.png')
+        counter +=1
