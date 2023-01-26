@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { Button, Space } from 'antd';
 import Checkbox from "./Checkbox";
 import RadioButton from "./RadioButton";
 import NumberInput from "./NumberInput";
@@ -77,6 +78,7 @@ const Options = () => {
                     onBlurEvent={event => setSteps(event.target.value.length > 0? Number(event.target.value): null)}
                 />
             </div>
+            <Button className={classes["submit-button"]} type="primary">Load Quantum Walk</Button>
         </div>
     );
 }
