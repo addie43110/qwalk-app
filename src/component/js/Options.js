@@ -1,7 +1,5 @@
-import React, {useEffect, useState} from "react";
-import Checkbox from "./Checkbox";
-import RadioButton from "./RadioButton";
-import NumberInput from "./NumberInput";
+import React, {useEffect, useState, useForm} from "react";
+import { Button, Space, Form, Radio, Input, Checkbox } from 'antd';
 import classes from "../css/Options.module.css";
 
 const LINE = "line";
@@ -13,6 +11,7 @@ const Options = () => {
     const [magnitude, setMagnitude] = useState(null);
     const [cumulativeProbability, setCumulativeProbability] = useState(false);
     const [steps, setSteps] = useState(null);
+    const [form] = Form.useForm();
 
     useEffect(() => {
         try {
@@ -50,33 +49,34 @@ const Options = () => {
         return ((value & (value-1)) === 0);
     }
 
+    const onFinish = (values) => {
+        console.log(values);
+    }
+
     return (
         <div className={classes["options-container"]}>
             <h1>Options</h1>
-            <h2>Type</h2>
-            <div className={classes["type-container"]}>
-                <RadioButton name={'type'} value={LINE} defaultChecked={true} label={'Line'} onChange={event => setType(event.target.value)}/>
-                <RadioButton name={'type'} value={GRID} defaultChecked={false} label={'Grid'} onChange={event => setType(event.target.value)}/>
-                <RadioButton name={'type'} value={CUBE} defaultChecked={false} label={'Cube'} onChange={event => setType(event.target.value)}/>
-            </div>
-            <h2>Dimensions</h2>
-            <div className={classes["dimensions-container"]}>
-                <NumberInput 
-                    label="Magnitude" 
-                    onBlurEvent={event => setMagnitude(event.target.value.length > 0? Number(event.target.value): null)}
-                />
-            </div>
-            <h2>Cumulative probability?</h2>
-            <div className={classes["cumulative-container"]}>
-                <Checkbox label="Y/N"/>
-            </div>
-            <h2>Number of steps</h2>
-            <div className={classes["steps-container"]}>
-                <NumberInput 
-                    label="Step(s)" 
-                    onBlurEvent={event => setSteps(event.target.value.length > 0? Number(event.target.value): null)}
-                />
-            </div>
+            <Form onFinish={onFinish} initialValues={{ type:LINE }}>
+                <Form.Item name="type" label="Type">
+                    <Radio.Group>
+                        <Radio value={LINE}> Line </Radio>
+                        <Radio value={GRID}> Grid </Radio>
+                        <Radio value={CUBE}> Cube </Radio>
+                    </Radio.Group>
+                </Form.Item>
+                <Form.Item name="magnitude" label="Magnitude">
+                    <Input />
+                </Form.Item>
+                <Form.Item name="cumulativeProbability" label="Cumulative probability?" valuePropName="checked">
+                    <Checkbox>Y/N</Checkbox>
+                </Form.Item>
+                <Form.Item name="numberOfSteps" label="Number of steps">
+                    <Input />
+                </Form.Item>
+                <Form.Item>
+                    <Button className={classes["submit-button"]} type="primary" htmlType="submit">Load Quantum Walk</Button>
+                </Form.Item>
+            </Form>
         </div>
     );
 }
