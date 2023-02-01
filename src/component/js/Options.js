@@ -9,7 +9,7 @@ const GRID = "grid";
 const CUBE = "cube";
 
 const Options = () => {
-    const [type, setType] = useState(LINE);
+    const [type, setType] = useState(GRID);
     const [magnitude, setMagnitude] = useState(null);
     const [cumulativeProbability, setCumulativeProbability] = useState(false);
     const [steps, setSteps] = useState(null);

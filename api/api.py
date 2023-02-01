@@ -40,7 +40,7 @@ def get_qw_test():
     iterations = 2
     create_plots2D(qwalk2D(dim, magnitude, iterations))
 
-    return send_file('images/new_plot.png', mimetype='image/gif')
+    return send_file('images/dist0.png', mimetype='image/gif')
     #return render_template('untitled1.html', name = 'new_plot', url ='./images/new_plot.png')
 
 @app.route('/api/get_qw_multiple', methods=['POST'])
