@@ -1,56 +1,36 @@
-import React, {useEffect, useState, useForm} from "react";
-import { Button, Space, Form, Radio, Input, Checkbox } from 'antd';
+import React from "react";
+import { Button, Form, Radio, Input, Checkbox } from 'antd';
 import classes from "../css/Options.module.css";
 
 const LINE = "line";
 const GRID = "grid";
 const CUBE = "cube";
 
-const Options = () => {
-    const [type, setType] = useState(GRID);
-    const [magnitude, setMagnitude] = useState(null);
-    const [cumulativeProbability, setCumulativeProbability] = useState(false);
-    const [steps, setSteps] = useState(null);
-    const [form] = Form.useForm();
-
-    useEffect(() => {
-        try {
-            if (magnitude === null || steps === null) {
-                return;
-            }
-
-            if (!Number.isInteger(magnitude) || !Number.isInteger(steps) || magnitude < 1 || steps < 0 || steps > 20) {
-                throw new Error("Invalid parameter(s) entered. Magnitude must be an integer greater than or equal to 1 \
-                    and steps must be a positive integer no larger than 20.");
-            }
-
-            if (type === LINE && !isAPowerOfTwo(magnitude)) {
-                throw new Error("Invalid magnitude entered. Magnitude must be a power of 2.");
-            }
-
-            let magnitudeSquared = Math.pow(magnitude, 2);
-            if (type === GRID && !isAPowerOfTwo(magnitudeSquared)) {
-                throw new Error("Invalid magnitude entered. Squared magnitude must be a power of 2.");
-            }
-
-            let magnitudeCubed = Math.pow(magnitude, 3);
-            if (type === CUBE && !isAPowerOfTwo(magnitudeCubed)) {
-                throw new Error("Invalid magnitude entered. Cubed magnitude must be a power of 2.");
-            }
-
-            setMagnitude(magnitude);
-            setSteps(steps);
-        } catch (e) {
-            console.error(`${e.message}`)
-        }
-    }, [type, magnitude, steps]);
+const Options = (props) => {
+    const {setErrorMessage} = props;
+    
 
     const isAPowerOfTwo = (value) => {
         return ((value & (value-1)) === 0);
     }
 
     const onFinish = (values) => {
+        const {type, magnitude, cumulativeProbability, steps}  = values;
         console.log(values);
+        if (magnitude === undefined || steps === null) {
+            setErrorMessage("Empty field(s)");
+        } else if (!Number.isInteger(magnitude) || !Number.isInteger(steps) || magnitude < 1 || steps < 0 || steps > 20) {
+            setErrorMessage("Invalid parameter(s) entered. Magnitude must be an integer greater than or equal to 1 \
+                and steps must be a positive integer no larger than 20.");
+        } else if (type === LINE && !isAPowerOfTwo(magnitude)) {
+            setErrorMessage("Invalid magnitude entered. Magnitude must be a power of 2.");
+        } else if (type === GRID && !isAPowerOfTwo(Math.pow(magnitude, 2))) {
+            setErrorMessage("Invalid magnitude entered. Squared magnitude must be a power of 2.");
+        } else if (type === CUBE && !isAPowerOfTwo(Math.pow(magnitude, 3))) {
+            setErrorMessage("Invalid magnitude entered. Cubed magnitude must be a power of 2.");
+        } else {
+            console.log("Send post request!");
+        }
     }
 
     return (
