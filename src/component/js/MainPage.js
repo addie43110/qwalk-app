@@ -3,6 +3,7 @@ import React from "react";
 
 import classes from "../css/MainPage.module.css";
 import GraphDisplay from "./GraphDisplay";
+import InstructionsPanel from "./InstructionsPanel";
 import Options from "./Options";
 
 export default class MainPage extends React.Component {
@@ -13,6 +14,7 @@ export default class MainPage extends React.Component {
     render() {
         return (
             <div className={classes.container}>
+                <InstructionsPanel/>
                 <GraphDisplay steps={null}/>
                 <Options/>
             </div>
