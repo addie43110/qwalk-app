@@ -28,7 +28,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid salmon;
     height: 100%;
     width: 50%;
 }
@@ -49,7 +48,6 @@
     align-items: center;
     color: white;
     margin-top: 10%;
-    border: 1px solid orange;
 }
 
 .title h1 {
