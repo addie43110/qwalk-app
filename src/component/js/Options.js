@@ -9,7 +9,6 @@ const CUBE = "cube";
 const Options = () => {
     const [type, setType] = useState(GRID);
     const [numStates, setNumStates] = useState(null);
-    const [cumulativeProbability, setCumulativeProbability] = useState(false);
     const [steps, setSteps] = useState(null);
     const [form] = Form.useForm();
 
@@ -74,9 +73,6 @@ const Options = () => {
                 </Form.Item>
                 <Form.Item name="numStates" label="Number of States">
                     <Input />
-                </Form.Item>
-                <Form.Item name="cumulativeProbability" label="Cumulative probability?" valuePropName="checked">
-                    <Checkbox>Y/N</Checkbox>
                 </Form.Item>
                 <Form.Item name="numberOfSteps" label="Number of steps">
                     <Input />

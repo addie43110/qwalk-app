@@ -34,12 +34,14 @@ const GraphDisplay=(props)=>{
             .then((blob) => URL.createObjectURL(blob))
     }
     const fetchGraph = () => {
+        console.log('here');
         setLoadingGraph(true);
         fetch('http://localhost:8000/api/get_qw_test')
             .then(res => decodeImage(res))
             .then((url) => {
                 setGraph(url);
                 setLoadingGraph(false);
+                console.log('done');
             })
             .catch(function(err) {
                 setLoadingGraph(false);
@@ -53,7 +55,7 @@ const GraphDisplay=(props)=>{
 
     return (
         <div className={classes["display-container"]}>
-            {!loadingGraph ? <LoadingIcons.Grid fill={'#3880ff'} /> :
+            {loadingGraph ? <LoadingIcons.Grid fill={'#3880ff'} /> :
                 <>
                     <div className={classes.display}>
                         <div className="test"></div>
