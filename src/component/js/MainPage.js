@@ -4,6 +4,7 @@ import React from "react";
 import classes from "../css/MainPage.module.css";
 import GraphDisplay from "./GraphDisplay";
 import InstructionsPanel from "./InstructionsPanel";
+import LandingPage from "./LandingPage";
 import Options from "./Options";
 
 export default class MainPage extends React.Component {
@@ -14,6 +15,7 @@ export default class MainPage extends React.Component {
     render() {
         return (
             <div className={classes.container}>
+                <LandingPage/>
                 <InstructionsPanel/>
                 <GraphDisplay steps={null}/>
                 <Options/>
