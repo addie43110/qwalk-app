@@ -1,0 +1,181 @@
+@font-face {
+    font-family: 'SourceCodePro-Black';
+    src: local('SourceCodePro-Black'), url(../fonts/SourceCodePro-Black.ttf) format('truetype');
+  }
+
+@font-face {
+    font-family: 'NotoSerifAhom';
+    src: local('NotoSerifAhom'), url(../fonts/NotoSerifAhom-Regular.ttf) format('truetype');
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    width: 100vw;
+    background-color: #CFE0C9;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+.textcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 5%;
+    width: 50%;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 10%;
+}
+
+.title h1 {
+    text-align: center;
+    font-size: xxx-large;
+    font-family: 'SourceCodePro-Black';
+}
+
+.title h2, h3 {
+    font-family: 'NotoSerifAhom';
+    font-size: medium;
+}
+
+.title h2 {
+    margin-bottom: 0px;
+}
+
+.title h3 {
+    margin-top: 0px;
+}
+
+.resources {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+    margin-left: 10%;
+    font-family: 'SourceCodePro-Black';
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5%;
+}
+
+.scicon {
+    border-radius: 25px;
+    transition: box-shadow 0.3s;
+}
+
+.scicon:hover {
+    border-radius: 25px;
+    box-shadow: 0 0 10px 5px rgba(42, 42, 42, 0.358); 
+}
+
+.scicon:active {
+    border-radius: 25px;
+    box-shadow: 0 0 0 0;
+}
+
+.nameLink {
+    text-decoration: none;
+    color: white;
+    overflow: hidden;
+}
+.nameLink:link {
+    text-decoration: none;
+}
+.nameLink:visited {
+    text-decoration: none;
+}
+.nameLink:hover {
+    text-decoration: none;
+}
+.nameLink:active {
+    text-decoration: none;
+}
+
+#uvic::before {
+    position: absolute;
+    content: attr(data-content);
+    color: rgb(204, 90, 90);
+    clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+    transition: clip-path 275ms ease;
+}
+
+#uvic:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+#addie::before {
+    position: absolute;
+    content: attr(data-content);
+    color: rgb(92, 167, 137);
+    clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+    transition: clip-path 275ms ease;
+}
+
+#addie:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+#samantha::before {
+    position: absolute;
+    content: attr(data-content);
+    color: rgb(248, 159, 120);
+    clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+    transition: clip-path 275ms ease;
+}
+
+#samantha:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+#jose::before {
+    position: absolute;
+    content: attr(data-content);
+    color: rgb(62, 131, 73);
+    clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+    transition: clip-path 275ms ease;
+}
+
+#jose:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+#austin::before {
+    position: absolute;
+    content: attr(data-content);
+    color: rgb(157, 135, 203);
+    clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+    transition: clip-path 275ms ease;
+}
+
+#austin:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}

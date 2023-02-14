@@ -13,9 +13,11 @@
     "antd": "^5.1.7",
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
+    "react-awesome-button": "^7.0.5",
     "react-dom": "^18.2.0",
     "react-loading-icons": "^1.1.0",
     "react-scripts": "5.0.1",
+    "react-social-icons": "^5.15.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
