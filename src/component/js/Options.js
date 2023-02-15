@@ -1,13 +1,14 @@
 import React, {useEffect, useState, useForm} from "react";
 import { Button, Space, Form, Radio, Input, Checkbox } from 'antd';
 import classes from "../css/Options.module.css";
-import {fetchGraph} from "./GraphDisplay";
 
 const LINE = 1;
 const GRID = 2;
 const CUBE = 3;
 
-const Options = () => {
+const Options = (props) => {
+    const {graphHandler} = props;
+
     const [type, setType] = useState(GRID);
     const [numStates, setNumStates] = useState(null);
     const [steps, setSteps] = useState(null);
@@ -25,8 +26,8 @@ const Options = () => {
                     will take.");
             }
 
-            if (!Number.isInteger(numStates) || !Number.isInteger(steps) || numStates < 1 || steps < 0 || steps > 20 || numStates>64) {
-                throw new Error("Invalid parameter(s) entered. Number of states must be a positive integer no larger than 64 \
+            if (!Number.isInteger(numStates) || !Number.isInteger(steps) || numStates < 1 || steps < -1 || steps > 20 || numStates>64) {
+                throw new Error("Invalid parameter(s) entered. Number of states must be a whole number no larger than 64 \
                     and steps must be a positive integer no larger than 20.");
             }
 
@@ -46,8 +47,9 @@ const Options = () => {
                     must be a power of 2.");
             }
 
-            setNumStates(numStates);
-            setSteps(steps);
+            //setNumStates(numStates);
+            //setSteps(steps);
+            //setType(type);
         } catch (e) {
             console.error(`${e.message}`)
         }
@@ -57,11 +59,13 @@ const Options = () => {
         return ((value & (value-1)) === 0);
     }
 
-    const onFinish = (values) => {
-        values.num_states = Number(values.num_states);
-        values.iterations = Number(values.iterations);
-        console.log(values);
-        fetchGraph();
+    const onFinish = (fieldsValues) => {
+        const values = {
+            'dimensions': Number(fieldsValues['dimensions']),
+            'num_states': Number(fieldsValues['num_states']),
+            'iterations': Number(fieldsValues['iterations'])
+        }
+        graphHandler(values);
     }
 
     return (

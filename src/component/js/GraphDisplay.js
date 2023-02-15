@@ -5,22 +5,25 @@ import LoadingIcons from 'react-loading-icons'
 
 export const GraphDisplay=(props)=>{
     const {steps} = props;
+    const {urls} = props;
+    const {loading} = props;
 
-    const [currentTime, setCurrentTime] = useState(0);
     const [graph, setGraph] = useState("");
     const [loadingGraph, setLoadingGraph] = useState(false);
 
-    const getGraph = () => {
-        setLoadingGraph(true);
-        fetchGraphs({dimensions:3,iterations:2,num_states:8}).then(urls => {
-            setGraph(urls[1]);
-        });
-        setLoadingGraph(false);
+    const insertUrls = () => {
+        if (urls) {
+            setGraph(urls[0]);
+        }
     }
 
     useEffect(() => {
-        getGraph();
-    }, []);
+        insertUrls();
+    }, [urls, steps]);
+
+    useEffect(() => {
+        setLoadingGraph(loading);
+    }, [loading]);
 
     return (
         <div className={classes["display-container"]}>
@@ -28,7 +31,7 @@ export const GraphDisplay=(props)=>{
                 <>
                     <div className={classes.display}>
                         <div className="test"></div>
-                        <img src={graph} alt="plot"></img>
+                        {urls ? <img src={graph} alt="plot"></img> : <></>}
                     </div>
                     <div className={classes["slider-container"]}>
                         <StepSlider steps={steps}/>
@@ -39,7 +42,7 @@ export const GraphDisplay=(props)=>{
     );
 }
 
-export const fetchGraph = () => {
+/* export const fetchGraph = () => {
     return fetch('http://localhost:8000/api/get_qw_test')
         .then(res => decodeImage(res))
         .then((url) => {
@@ -48,26 +51,6 @@ export const fetchGraph = () => {
         .catch(function(err) {
             throw new Error(err);
         });
-}
-
-export const fetchGraphs = (jsonOptions) => {
-    return fetch('http://localhost:8000/api/get_qw_multiple', { 
-      method: 'POST', 
-      mode: 'cors', 
-      body: JSON.stringify(jsonOptions) // body data type must match "Content-Type" header
-    }).then(response => response.json())
-    .then(data => {
-        var urls = []
-        for (var key in data) {
-            if (data.hasOwnProperty(key)) {
-                urls.push(`data:image/jpeg;base64,${data[key]}`);
-
-            }
-        }
-        return urls;
-    }).catch(function(err) {
-        throw new Error(err);
-    });
 }
 
 const decodeImage = async (res) => {
@@ -93,3 +76,4 @@ const decodeImage = async (res) => {
         .then((response) => response.blob())
         .then((blob) => URL.createObjectURL(blob))
 }
+ */
