@@ -15,9 +15,9 @@ export default class LandingPage extends React.Component {
                     <div className={classes.title}>
                         <h1>Quantum Walks Visualization Application</h1>
                         <h2><a className={classes.nameLink} id={styles.uvic} data-content="University of Victoria" href="https://www.uvic.ca/ecs/" target="_blank">University of Victoria</a>, BC, Canada</h2>
-                        <h3><a className={classes.nameLink} id={styles.addie} data-content="Addie Jordon" href="https://github.com/addie43110" target="_blank">Addie Jordon</a>, 
-                            <a className={classes.nameLink} id={styles.samantha} data-content="Samantha Norrie" href="https://github.com/Samantha-norrie" target="_blank">Samantha Norrie</a>, 
-                            <a className={classes.nameLink} id={styles.jose} data-content="José Ossorio" href="https://github.com/jmossorio99" target="_blank">José Ossorio</a>, 
+                        <h3><a className={classes.nameLink} id={styles.addie} data-content="Addie Jordon" href="https://github.com/addie43110" target="_blank">Addie Jordon</a>,&nbsp;
+                            <a className={classes.nameLink} id={styles.samantha} data-content="Samantha Norrie" href="https://github.com/Samantha-norrie" target="_blank">Samantha Norrie</a>,&nbsp;
+                            <a className={classes.nameLink} id={styles.jose} data-content="José Ossorio" href="https://github.com/jmossorio99" target="_blank">José Ossorio</a>,&nbsp;
                             <a className={classes.nameLink} id={styles.austin} data-content="Austin Hawkins-Seagram" href="https://github.com/T-bop" target="_blank">Austin Hawkins-Seagram</a>
                         </h3>
                     </div>
