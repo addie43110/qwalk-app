@@ -1,10 +1,11 @@
 import React, {useEffect, useState, useForm} from "react";
 import { Button, Space, Form, Radio, Input, Checkbox } from 'antd';
 import classes from "../css/Options.module.css";
+import {fetchGraph} from "./GraphDisplay";
 
-const LINE = "line";
-const GRID = "grid";
-const CUBE = "cube";
+const LINE = 1;
+const GRID = 2;
+const CUBE = 3;
 
 const Options = () => {
     const [type, setType] = useState(GRID);
@@ -57,24 +58,27 @@ const Options = () => {
     }
 
     const onFinish = (values) => {
+        values.num_states = Number(values.num_states);
+        values.iterations = Number(values.iterations);
         console.log(values);
+        fetchGraph();
     }
 
     return (
         <div className={classes["options-container"]}>
             <h1>Options</h1>
             <Form onFinish={onFinish} initialValues={{ type:LINE }}>
-                <Form.Item name="type" label="Type">
+                <Form.Item name="dimensions" label="Type">
                     <Radio.Group>
                         <Radio value={LINE}> Line </Radio>
                         <Radio value={GRID}> Grid </Radio>
                         <Radio value={CUBE}> Cube </Radio>
                     </Radio.Group>
                 </Form.Item>
-                <Form.Item name="numStates" label="Number of States">
+                <Form.Item name="num_states" label="Number of States">
                     <Input />
                 </Form.Item>
-                <Form.Item name="numberOfSteps" label="Number of steps">
+                <Form.Item name="iterations" label="Number of steps">
                     <Input />
                 </Form.Item>
                 <Form.Item>

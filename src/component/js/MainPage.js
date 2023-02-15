@@ -2,7 +2,7 @@ import React from "react";
 //import PropTypes from "prop-types";
 
 import classes from "../css/MainPage.module.css";
-import GraphDisplay from "./GraphDisplay";
+import {GraphDisplay} from "./GraphDisplay";
 import InstructionsPanel from "./InstructionsPanel";
 import LandingPage from "./LandingPage";
 import Options from "./Options";

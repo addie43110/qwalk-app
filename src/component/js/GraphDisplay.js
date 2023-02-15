@@ -3,54 +3,23 @@ import classes from "../css/GraphDisplay.module.css"
 import StepSlider from "./StepSlider";
 import LoadingIcons from 'react-loading-icons'
 
-const GraphDisplay=(props)=>{
+export const GraphDisplay=(props)=>{
     const {steps} = props;
 
     const [currentTime, setCurrentTime] = useState(0);
     const [graph, setGraph] = useState("");
     const [loadingGraph, setLoadingGraph] = useState(false);
 
-    const decodeImage = async (res) => {
-        return new Promise(resolve => {
-            const reader = res.body.getReader();
-            resolve(new ReadableStream({
-                start(controller) {
-                    return pump();
-                    function pump() {
-                        return reader.read().then(({ done, value }) => {
-                            if (done) {
-                                controller.close();
-                                return;
-                            }
-                            controller.enqueue(value);
-                            return pump();
-                        });
-                    }
-                }
-            }))
-        })
-            .then((stream) => new Response(stream))
-            .then((response) => response.blob())
-            .then((blob) => URL.createObjectURL(blob))
-    }
-    const fetchGraph = () => {
-        console.log('here');
+    const getGraph = () => {
         setLoadingGraph(true);
-        fetch('http://localhost:8000/api/get_qw_test')
-            .then(res => decodeImage(res))
-            .then((url) => {
-                setGraph(url);
-                setLoadingGraph(false);
-                console.log('done');
-            })
-            .catch(function(err) {
-                setLoadingGraph(false);
-                console.log('Failed to fetch page: ', err);
-            });
+        fetchGraphs({dimensions:3,iterations:2,num_states:8}).then(urls => {
+            setGraph(urls[1]);
+        });
+        setLoadingGraph(false);
     }
 
     useEffect(() => {
-        fetchGraph();
+        getGraph();
     }, []);
 
     return (
@@ -70,5 +39,57 @@ const GraphDisplay=(props)=>{
     );
 }
 
+export const fetchGraph = () => {
+    return fetch('http://localhost:8000/api/get_qw_test')
+        .then(res => decodeImage(res))
+        .then((url) => {
+            return url;
+        })
+        .catch(function(err) {
+            throw new Error(err);
+        });
+}
 
-export default GraphDisplay;
+export const fetchGraphs = (jsonOptions) => {
+    return fetch('http://localhost:8000/api/get_qw_multiple', { 
+      method: 'POST', 
+      mode: 'cors', 
+      body: JSON.stringify(jsonOptions) // body data type must match "Content-Type" header
+    }).then(response => response.json())
+    .then(data => {
+        var urls = []
+        for (var key in data) {
+            if (data.hasOwnProperty(key)) {
+                urls.push(`data:image/jpeg;base64,${data[key]}`);
+
+            }
+        }
+        return urls;
+    }).catch(function(err) {
+        throw new Error(err);
+    });
+}
+
+const decodeImage = async (res) => {
+    return new Promise(resolve => {
+        const reader = res.body.getReader();
+        resolve(new ReadableStream({
+            start(controller) {
+                return pump();
+                function pump() {
+                    return reader.read().then(({ done, value }) => {
+                        if (done) {
+                            controller.close();
+                            return;
+                        }
+                        controller.enqueue(value);
+                        return pump();
+                    });
+                }
+            }
+        }))
+    })
+        .then((stream) => new Response(stream))
+        .then((response) => response.blob())
+        .then((blob) => URL.createObjectURL(blob))
+}
