@@ -7,6 +7,8 @@ const SLIDER_VALUE_ZERO_STEPS = 1;
 
 const StepSlider = (props) => {
     const {steps} = props;
+    const {changePlot} = props;
+    const {value} = props;
 
     const CustomSlider = styled(Slider)(({ theme }) => ({
         color: theme.palette.mode === 'dark' ? '#3880ff' : '#3880ff',
@@ -50,7 +52,9 @@ const StepSlider = (props) => {
 
     return (
         <CustomSlider
-        defaultValue={steps !== 0? DEFAULT_SLIDER_VALUE: SLIDER_VALUE_ZERO_STEPS} 
+        onChange={changePlot}
+        defaultValue={steps !== 0? DEFAULT_SLIDER_VALUE: SLIDER_VALUE_ZERO_STEPS}
+        value={steps !== 0 ? value : SLIDER_VALUE_ZERO_STEPS}
         step={SLIDER_NODE_STEP_SIZE} 
         marks={steps > 0? true: false}
         min={0} 

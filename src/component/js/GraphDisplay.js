@@ -10,10 +10,19 @@ export const GraphDisplay=(props)=>{
 
     const [graph, setGraph] = useState("");
     const [loadingGraph, setLoadingGraph] = useState(false);
+    const [currPlotNum, setCurrPlotNum] = useState(0);
 
     const insertUrls = () => {
         if (urls) {
             setGraph(urls[0]);
+        }
+    }
+
+    const changePlot = (e, plotNum) => {
+        console.log('plotNum: '+plotNum);
+        if (plotNum >= 0 && plotNum <= steps) {
+            setCurrPlotNum(plotNum);
+            setGraph(urls[plotNum]);
         }
     }
 
@@ -28,15 +37,15 @@ export const GraphDisplay=(props)=>{
     return (
         <div className={classes["display-container"]}>
             {loadingGraph ? <LoadingIcons.Grid fill={'#3880ff'} /> :
-                <>
+                <div className={classes.graphSliderContainer}>
                     <div className={classes.display}>
                         <div className="test"></div>
                         {urls ? <img src={graph} alt="plot"></img> : <></>}
                     </div>
                     <div className={classes["slider-container"]}>
-                        <StepSlider steps={steps}/>
+                        <StepSlider changePlot={changePlot} value={currPlotNum} steps={steps}/>
                     </div>
-                </>
+                </div>
             }
         </div>
     );
