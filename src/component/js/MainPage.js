@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 //import PropTypes from "prop-types";
 
 import classes from "../css/MainPage.module.css";
@@ -11,6 +11,8 @@ const MainPage = () => {
     const [urls, setUrls] = useState(null);
     const [loading, setLoading] = useState(false);
     const [steps, setSteps] = useState(null);
+
+    const instructionsRef = useRef(null);
 
     const fetchGraphs = (jsonOptions) => {
         setLoading(true);
@@ -35,10 +37,14 @@ const MainPage = () => {
         });
     }
 
+    const scrollIntoView = () => {
+        instructionsRef.current.scrollIntoView({block: 'center', inline: 'center', behavior: 'smooth'});
+    }
+
     return (
         <div className={classes.container}>
-            <LandingPage/>
-            <InstructionsPanel/>
+            <LandingPage scrollIntoView={scrollIntoView}/>
+            <InstructionsPanel ref={instructionsRef}/>
             <GraphDisplay steps={steps} loading={loading} urls={urls}/>
             <Options graphHandler={fetchGraphs}/>
         </div>
