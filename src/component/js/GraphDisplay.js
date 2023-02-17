@@ -28,6 +28,7 @@ export const GraphDisplay=(props)=>{
 
     useEffect(() => {
         insertUrls();
+        setCurrPlotNum(0);
     }, [urls, steps]);
 
     useEffect(() => {

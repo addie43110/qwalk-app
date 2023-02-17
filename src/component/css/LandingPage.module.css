@@ -27,9 +27,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    row-gap: 3rem;
     align-items: center;
     height: 100%;
     width: 50%;
+}
+
+.rightContainer .awsbtn {
+    font-family: 'SourceCodePro-Black';
+    --button-default-height: 60px;
+    --button-default-font-size: 20px;
+    --button-horizontal-padding: 25px;
+    --button-raise-level: 5px;
+    --button-default-border-radius: 30px;
+    --button-secondary-color-light: #468e53;
+    --button-secondary-color-dark: #468e53;
+    --button-secondary-border: 2px solid #468e53;
 }
 
 .textcontainer {
@@ -87,20 +100,13 @@
     gap: 5%;
 }
 
-.scicon {
-    border-radius: 25px;
-    transition: box-shadow 0.3s;
-}
-
-.scicon:hover {
-    border-radius: 25px;
-    box-shadow: 0 0 10px 5px rgba(42, 42, 42, 0.358); 
-}
-
-.scicon:active {
-    border-radius: 25px;
-    box-shadow: 0 0 0 0;
-}
+/*.icons .scicon {
+    font-family: 'SourceCodePro-Black';
+    --button-default-height: 45px;
+    --button-default-font-size: 14px;
+    --button-raise-level: 3px;
+    --button-default-border-radius: 10px;
+}*/
 
 .nameLink {
     text-decoration: none;

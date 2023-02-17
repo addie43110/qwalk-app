@@ -1,10 +1,11 @@
 import React from "react";
 import { SocialIcon } from 'react-social-icons';
-import { AwesomeButton } from 'react-awesome-button';
+import { AwesomeButton, AwesomeButtonSocial } from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 
 import classes from "../css/LandingPage.module.css"
 import styles from "../css/LandingPage.module.css"
+
 
 const LandingPage = (props) => {
     const {scrollIntoView} = props;
@@ -24,15 +25,19 @@ const LandingPage = (props) => {
                 <div className={classes.resources}>
                     <h1>Links</h1>
                     <div className={classes.icons}>
-                        <SocialIcon className={classes.scicon} url="https://github.com/addie43110/qwalk-app" />
-                        <SocialIcon className={classes.scicon} url="https://github.com/addie43110/qwalk-app-backend" />
-                        <SocialIcon className={classes.scicon} url="mailto:aedjordon@gmail.com" network="telegram" />
+                        <AwesomeButtonSocial type="github" className={classes.scicon} href="https://github.com/addie43110/qwalk-app" target="_blank">Frontend</AwesomeButtonSocial>
+                        <AwesomeButtonSocial type="github" className={classes.scicon} href="https://github.com/addie43110/qwalk-app-backend" target="_blank">Backend</AwesomeButtonSocial>
+                        <AwesomeButtonSocial type="messenger" className={classes.scicon} href="mailto:aedjordon@gmail.com" target="_blank">Contact</AwesomeButtonSocial>
                     </div>
                 </div>
             </div>
             <div className={classes.rightContainer}>
                 <img src="https://www.delta.tudelft.nl/sites/default/files/images/mechanical_schroedinger_cat.gif"></img>
-                <AwesomeButton type="secondary" onMouseUp={scrollIntoView}>Get Started</AwesomeButton>
+                <AwesomeButton
+                    type="secondary"
+                    onMouseUp={scrollIntoView}
+                    className={classes.awsbtn}
+                    >Get Started</AwesomeButton>
             </div>
         </div>
     );
