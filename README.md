@@ -13,10 +13,10 @@ The user is able to specify the size of the structure and number of steps taken.
 
 This frontend project is written using the React.js framework and classy npm components such as
 
-- ![Ant Design](https://ant.design) for the options form
-- ![Material UI](https://mui.com) for the slider
-- ![Awesome Button](https://github.com/rcaferati/react-awesome-button) for the buttons on the landing page
+- [Ant Design](https://ant.design) for the options form
+- [Material UI](https://mui.com) for the slider
+- [Awesome Button](https://github.com/rcaferati/react-awesome-button) for the buttons on the landing page
 
 ## Backend
 
-You can find the repository for the backend here: ![https://github.com/addie43110/qwalk-app-backend](https://github.com/addie43110/qwalk-app-backend).
+You can find the repository for the backend here: [https://github.com/addie43110/qwalk-app-backend](https://github.com/addie43110/qwalk-app-backend).
