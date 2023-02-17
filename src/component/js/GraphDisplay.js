@@ -18,7 +18,7 @@ export const GraphDisplay=(props)=>{
         }
     }
 
-    const changePlot = (e, plotNum) => {
+    const changePlot = (_, plotNum) => {
         console.log('plotNum: '+plotNum);
         if (plotNum >= 0 && plotNum <= steps) {
             setCurrPlotNum(plotNum);
@@ -40,7 +40,6 @@ export const GraphDisplay=(props)=>{
             {loadingGraph ? <LoadingIcons.Grid fill={'#3880ff'} /> :
                 <div className={classes.graphSliderContainer}>
                     <div className={classes.display}>
-                        <div className="test"></div>
                         {urls ? <img src={graph} alt="plot"></img> : <></>}
                     </div>
                     <div className={classes["slider-container"]}>
@@ -52,16 +51,8 @@ export const GraphDisplay=(props)=>{
     );
 }
 
-/* export const fetchGraph = () => {
-    return fetch('http://localhost:8000/api/get_qw_test')
-        .then(res => decodeImage(res))
-        .then((url) => {
-            return url;
-        })
-        .catch(function(err) {
-            throw new Error(err);
-        });
-}
+
+/* use for debugging single plots 
 
 const decodeImage = async (res) => {
     return new Promise(resolve => {

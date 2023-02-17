@@ -1,5 +1,4 @@
 import React, {useState, useRef} from "react";
-//import PropTypes from "prop-types";
 
 import classes from "../css/MainPage.module.css";
 import {GraphDisplay} from "./GraphDisplay";

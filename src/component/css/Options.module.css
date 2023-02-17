@@ -1,21 +1,13 @@
-.options-container {
-
+.form Input, Form.Item {
+    width: 20vw;
 }
 
-.type-container {
-
+.form .ant-form-item-explain-error {
+    width: 20vw;
 }
 
-.dimensions-container {
-
-}
-
-.cumulative-container {
-
-}
-
-.steps-container {
-    
+.form .formItem {
+    width: 30vw;
 }
 
 .submit-button {

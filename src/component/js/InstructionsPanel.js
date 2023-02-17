@@ -1,7 +1,6 @@
 import React, {forwardRef} from "react";
 
 import classes from "../css/InstructionsPanel.module.css"
-import LandingPage from "./LandingPage";
 
 const InstructionsPanel = forwardRef((props, ref) => {
 
