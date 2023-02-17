@@ -1,5 +1,4 @@
 import React from "react";
-import { SocialIcon } from 'react-social-icons';
 import { AwesomeButton, AwesomeButtonSocial } from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 
