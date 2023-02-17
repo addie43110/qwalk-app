@@ -16,6 +16,7 @@ This frontend project is written using the React.js framework and classy npm com
 - [Ant Design](https://ant.design) for the options form
 - [Material UI](https://mui.com) for the slider
 - [Awesome Button](https://github.com/rcaferati/react-awesome-button) for the buttons on the landing page
+- [react-loading-icons](https://www.npmjs.com/package/react-loading-icons) for the loading grid
 
 ## Backend
 
