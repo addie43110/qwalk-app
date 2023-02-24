@@ -17,7 +17,7 @@ const Options = (props) => {
     }
 
     const isAPowerOfTwo = (value) => {
-        return ((value & (value-1)) === 0);
+        return (Math.log(value)/Math.log(2)) % 1 === 0;
     }
 
     const onFinish = (fieldsValues) => {
@@ -48,13 +48,13 @@ const Options = (props) => {
         }
 
         let numStatesSqrt = Math.sqrt(value);
-        if (type === GRID && (!Number.isInteger(numStatesSqrt) || !isAPowerOfTwo(numStatesSqrt))) {
+        if (type === GRID && !isAPowerOfTwo(numStatesSqrt)) {
             throw new Error("If grid is selected, the square root of the number of states \
                 must be a power of 2");
         }
 
-        let numStatesCbrt =Math.pow(value, 1./3);
-        if (type === CUBE && (!Number.isInteger(numStatesCbrt) || !isAPowerOfTwo(numStatesCbrt))) {
+        let numStatesCbrt = Math.pow(value, 1./3);
+        if (type === CUBE && !isAPowerOfTwo(numStatesCbrt)) {
             throw new Error("If cube is selected, the cube root of the number of states \
                 must be a power of 2");
         }

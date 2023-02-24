@@ -10,9 +10,10 @@
     -o-background-size: cover;
     background-size: cover;
     position: relative;
+    margin-bottom: 5rem;
 }
 
-.background {
+.textContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,10 +21,9 @@
     width: 50%;
 }
 
-.instructions {
+.textblock {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
 }
