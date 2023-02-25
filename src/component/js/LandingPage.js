@@ -1,10 +1,10 @@
+import { requirePropFactory } from "@mui/material";
 import React from "react";
 import { AwesomeButton, AwesomeButtonSocial } from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 
 import classes from "../css/LandingPage.module.css"
 import styles from "../css/LandingPage.module.css"
-
 
 const LandingPage = (props) => {
     const {scrollIntoView} = props;
@@ -31,7 +31,7 @@ const LandingPage = (props) => {
                 </div>
             </div>
             <div className={classes.rightContainer}>
-                <img src="https://www.delta.tudelft.nl/sites/default/files/images/mechanical_schroedinger_cat.gif"></img>
+                <img id={styles.qwgif} src={require("../../qw-gif.gif")}></img>
                 <AwesomeButton
                     type="secondary"
                     onMouseUp={scrollIntoView}

@@ -33,6 +33,10 @@
     width: 50%;
 }
 
+#qwgif {
+    max-width: 65%;
+}
+
 .rightContainer .awsbtn {
     font-family: 'SourceCodePro-Black';
     --button-default-height: 60px;
