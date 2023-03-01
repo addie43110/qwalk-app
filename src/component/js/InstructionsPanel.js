@@ -1,11 +1,15 @@
 import React, {forwardRef} from "react";
 
 import classes from "../css/InstructionsPanel.module.css"
+import styles from "../css/InstructionsPanel.module.css"
 
 const InstructionsPanel = forwardRef((props, ref) => {
 
     return (
         <div ref={ref} className={classes.container}>
+            <div className={classes.gifContainer}>
+                <img id={styles.instgif} src={require("../../qw-gif.gif")}></img>
+            </div>
             <div className={classes.textContainer}>
                 <div className={classes.textblock}>
                     <h1>What are quantum walks?</h1>

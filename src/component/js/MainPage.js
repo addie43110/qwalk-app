@@ -44,8 +44,10 @@ const MainPage = () => {
         <div className={classes.container}>
             <LandingPage scrollIntoView={scrollIntoView}/>
             <InstructionsPanel ref={instructionsRef}/>
-            <GraphDisplay steps={steps} loading={loading} urls={urls}/>
-            <Options graphHandler={fetchGraphs}/>
+            <div className={classes.visualizationContainer}>
+                <GraphDisplay steps={steps} loading={loading} urls={urls}/>
+                <Options graphHandler={fetchGraphs}/>
+            </div>
         </div>
     );
 }
