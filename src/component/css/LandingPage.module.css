@@ -133,7 +133,7 @@
 #uvic::before {
     position: absolute;
     content: attr(data-content);
-    color: rgb(204, 90, 90);
+    color: #cc5a5a;
     clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
     transition: clip-path 275ms ease;
 }
@@ -145,7 +145,7 @@
 #addie::before {
     position: absolute;
     content: attr(data-content);
-    color: rgb(92, 167, 137);
+    color: #5ca789;
     clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
     transition: clip-path 275ms ease;
 }
@@ -181,7 +181,7 @@
 #austin::before {
     position: absolute;
     content: attr(data-content);
-    color: rgb(157, 135, 203);
+    color: #9d87cb;
     clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
     transition: clip-path 275ms ease;
 }

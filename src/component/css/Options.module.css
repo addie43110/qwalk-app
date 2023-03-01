@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'SourceCodePro-Black';
+    src: local('SourceCodePro-Black'), url(../fonts/SourceCodePro-Black.ttf) format('truetype');
+  }
+
 .form Input, Form.Item {
     width: 20vw;
 }
@@ -13,4 +18,8 @@
 .submit-button {
      width: 100%;
      margin: 2rem 0rem;
+ }
+
+ .options-container h1 {
+    font-family: 'SourceCodePro-Black';
  }

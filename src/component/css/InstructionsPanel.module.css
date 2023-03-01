@@ -1,15 +1,21 @@
+@font-face {
+    font-family: 'SourceCodePro-Black';
+    src: local('SourceCodePro-Black'), url(../fonts/SourceCodePro-Black.ttf) format('truetype');
+  }
+
 .container {
-    overflow: hidden;
+    overflow: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     position: relative;
+    margin-top: 5rem;
     margin-bottom: 5rem;
 }
 
@@ -18,8 +24,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 50%;
-    max-width: 70%;
+    max-width: 50%;
 }
 
 .textblock {
@@ -27,4 +32,31 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.textblock h1 {
+    font-family: 'SourceCodePro-Black';
+}
+
+.gifContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 30%;
+}
+
+#instgif {
+    max-width: 65%;
+}
+
+#intro {
+    color: #5ca789;
+}
+
+#inst {
+    color: #2d7b5c;
+}
+
+#dev {
+    color: #6a9a80;
 }
