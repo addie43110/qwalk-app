@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from "react";
 import classes from "../css/GraphDisplay.module.css"
 import StepSlider from "./StepSlider";
+import Alert from '@mui/material/Alert';
 import LoadingIcons from 'react-loading-icons'
 
 export const GraphDisplay=(props)=>{
     const {steps} = props;
     const {urls} = props;
     const {loading} = props;
+    const {error} = props;
 
     const [graph, setGraph] = useState("");
     const [loadingGraph, setLoadingGraph] = useState(false);
@@ -38,6 +40,7 @@ export const GraphDisplay=(props)=>{
     return (
         <div className={classes["display-container"]}>
             {loadingGraph ? <LoadingIcons.Grid fill={'#3880ff'} /> :
+                error ? <Alert severity="error">Error loading image</Alert> :
                 <div className={classes.graphSliderContainer}>
                     <div className={classes.display}>
                         {urls ? <img src={graph} alt="plot"></img> : <></>}

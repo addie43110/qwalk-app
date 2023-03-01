@@ -9,6 +9,7 @@ import Options from "./Options";
 const MainPage = () => {
     const [urls, setUrls] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [errorLoading, setErrorLoading] = useState(false);
     const [steps, setSteps] = useState(null);
 
     const instructionsRef = useRef(null);
@@ -30,8 +31,11 @@ const MainPage = () => {
                 }
             }
             setUrls(urls);
+            setErrorLoading(false);
             setLoading(false);
         }).catch(function(err) {
+            setLoading(false);
+            setErrorLoading(true);
             throw new Error(err);
         });
     }
@@ -45,7 +49,7 @@ const MainPage = () => {
             <LandingPage scrollIntoView={scrollIntoView}/>
             <InstructionsPanel ref={instructionsRef}/>
             <div className={classes.visualizationContainer}>
-                <GraphDisplay steps={steps} loading={loading} urls={urls}/>
+                <GraphDisplay steps={steps} loading={loading} error={errorLoading} urls={urls}/>
                 <Options graphHandler={fetchGraphs}/>
             </div>
         </div>
