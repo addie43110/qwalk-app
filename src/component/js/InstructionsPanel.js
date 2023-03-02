@@ -8,7 +8,7 @@ const InstructionsPanel = forwardRef((props, ref) => {
     return (
         <div ref={ref} className={classes.container}>
             <div className={classes.gifContainer}>
-                <img id={styles.instgif} src={require("../../qw-gif.gif")}></img>
+                <img id={styles.instgif} src={require("../../walker.gif")}></img>
             </div>
             <div className={classes.textContainer}>
                 <div className={classes.textblock}>
