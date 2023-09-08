@@ -81,13 +81,14 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 55%;
+    width: 80%;
 }
 
 @media (min-width: 750px) {
     .textcontainer {
         align-items: flex-start;
         margin-left: 5%;
+        width: 55%;
     }
 }
 

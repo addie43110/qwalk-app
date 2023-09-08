@@ -43,13 +43,13 @@ const MainPage = (props) => {
     }
 
     const scrollIntoView = () => {
-        instructionsRef.current.scrollIntoView({block: 'center', inline: 'center', behavior: 'smooth'});
+        instructionsRef.current.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
     }
 
     return (
         <div className={classes.container}>
             <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
-            <InstructionsPanel ref={instructionsRef}/>
+            <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
             <div className={classes.visualizationContainer}>
                 <GraphDisplay steps={steps} loading={loading} error={errorLoading} urls={urls}/>
                 <Options graphHandler={fetchGraphs}/>

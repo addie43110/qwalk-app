@@ -27,6 +27,12 @@
     max-width: 50%;
 }
 
+@media (max-width: 750px) {
+    .textContainer {
+        max-width: 75%;
+    }
+}
+
 .textblock {
     display: flex;
     flex-direction: column;
@@ -43,6 +49,12 @@
     justify-content: center;
     align-items: center;
     max-width: 30%;
+}
+
+@media (max-width: 750px) {
+    .gifContainer {
+        max-width: 75%;
+    }
 }
 
 #instgif {
