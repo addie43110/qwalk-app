@@ -46,6 +46,19 @@ const MainPage = (props) => {
         instructionsRef.current.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
     }
 
+    if (isMobile) {
+        return (
+            <div className={classes.container}>
+                <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
+                <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
+                <div className={classes.visualizationContainer}>
+                    <Options graphHandler={fetchGraphs}/>
+                    <GraphDisplay steps={steps} loading={loading} error={errorLoading} urls={urls}/>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={classes.container}>
             <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>

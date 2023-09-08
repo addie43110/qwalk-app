@@ -16,3 +16,9 @@
     width: 100vw;
     padding-bottom: 10rem;
 }
+
+@media (max-width: 750px) {
+    .visualizationContainer { 
+        flex-direction: column;
+    }
+}

@@ -3,14 +3,21 @@
     justify-content: center;
     align-items: center;
     background-color: lightblue;
-    height: 30rem;
+    height: 45vw;
     width: 45vw;
     border-radius: 5px;
 }
 
+@media (max-width: 750px) {
+    .display {
+        height: 80vw;
+        width: 80vw;
+    }
+}
+
 .display img {
-    height: 30rem;
-    width: 45vw;
+    height: 100%;
+    width: 100%;
 }
 
 .display-container {
