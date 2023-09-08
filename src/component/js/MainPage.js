@@ -6,11 +6,13 @@ import InstructionsPanel from "./InstructionsPanel";
 import LandingPage from "./LandingPage";
 import Options from "./Options";
 
-const MainPage = () => {
+const MainPage = (props) => {
     const [urls, setUrls] = useState(null);
     const [loading, setLoading] = useState(false);
     const [errorLoading, setErrorLoading] = useState(false);
     const [steps, setSteps] = useState(null);
+
+    const {isMobile} = props;
 
     const instructionsRef = useRef(null);
 
@@ -41,13 +43,26 @@ const MainPage = () => {
     }
 
     const scrollIntoView = () => {
-        instructionsRef.current.scrollIntoView({block: 'center', inline: 'center', behavior: 'smooth'});
+        instructionsRef.current.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
+    }
+
+    if (isMobile) {
+        return (
+            <div className={classes.container}>
+                <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
+                <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
+                <div className={classes.visualizationContainer}>
+                    <Options graphHandler={fetchGraphs}/>
+                    <GraphDisplay steps={steps} loading={loading} error={errorLoading} urls={urls}/>
+                </div>
+            </div>
+        );
     }
 
     return (
         <div className={classes.container}>
-            <LandingPage scrollIntoView={scrollIntoView}/>
-            <InstructionsPanel ref={instructionsRef}/>
+            <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
+            <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
             <div className={classes.visualizationContainer}>
                 <GraphDisplay steps={steps} loading={loading} error={errorLoading} urls={urls}/>
                 <Options graphHandler={fetchGraphs}/>

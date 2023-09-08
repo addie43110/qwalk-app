@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useForm} from "react";
 import { Button, Space, Form, Radio, Input, Checkbox, InputNumber} from 'antd';
 import classes from "../css/Options.module.css";
+import styles from "../css/Options.module.css"
 
 const LINE = 1;
 const GRID = 2;
@@ -78,26 +79,28 @@ const Options = (props) => {
         <div className={classes["options-container"]}>
             <h1>Options</h1>
             <Form className={classes.form} onFinish={onFinish} initialValues={{ dimensions: LINE}}>
-                <Form.Item name="dimensions" label="Type" >
-                    <Radio.Group name="type" defaultValue={LINE} onChange={ v => setType(v.target.value) }>
+                <Form.Item className={classes.formItem} name="dimensions" label="Type" >
+                    <Radio.Group name="type" initialValues={LINE} onChange={ v => setType(v.target.value) }>
                         <Radio name="type" value={LINE}> Line </Radio>
                         <Radio name="type" value={GRID}> Grid </Radio>
                         <Radio name="type" value={CUBE}> Cube </Radio>
                     </Radio.Group>
                 </Form.Item>
-                <Form.Item className={classes.formItem} name="num_states" label="Number of States"
-                        rules={[
-                            { required: true, message: "Please enter the number of states"},
-                            { validator: validateNumStates }]}>
-                    <Input/>
-                </Form.Item>
-                <Form.Item name="iterations" label="Number of steps" 
-                        rules={[
-                            { required: true, message: 'Please enter the number of steps.' },
-                            { validator: validateNumSteps }]}>
-                    <Input />
-                </Form.Item>
-                <Form.Item>
+                <div className={classes.textInput}>
+                    <Form.Item className={classes.formItem} id={styles.numStates} name="num_states" label="Number of States"
+                            rules={[
+                                { required: true, message: "Please enter the number of states"},
+                                { validator: validateNumStates }]}>
+                        <Input/>
+                    </Form.Item>
+                    <Form.Item className={classes.formItem} id={styles.numSteps} name="iterations" label="Number of steps" 
+                            rules={[
+                                { required: true, message: 'Please enter the number of steps.' },
+                                { validator: validateNumSteps }]}>
+                        <Input />
+                    </Form.Item>
+                </div>
+                <Form.Item className={classes.formItem}>
                     <Button className={classes["submit-button"]} type="primary" htmlType="submit">Load Quantum Walk</Button>
                 </Form.Item>
             </Form>

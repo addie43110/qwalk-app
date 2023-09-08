@@ -3,23 +3,48 @@
     src: local('SourceCodePro-Black'), url(../fonts/SourceCodePro-Black.ttf) format('truetype');
   }
 
-.form Input, Form.Item {
-    width: 20vw;
-}
 
 .form .ant-form-item-explain-error {
-    width: 20vw;
-}
-
-.form .formItem {
     width: 30vw;
 }
 
+.form .formItem {
+    width: 35vw;
+}
+
 .submit-button {
-     width: 100%;
      margin: 2rem 0rem;
  }
 
  .options-container h1 {
     font-family: 'SourceCodePro-Black';
  }
+
+ .options-container {
+    display: flex;
+    flex-direction: column;
+    width: 45vw;
+ }
+
+ @media (max-width: 750px) {
+    .options-container {
+        align-items: center;
+        width: 90vw;
+    }
+
+    .form .formItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 75vw;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+}
