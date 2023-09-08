@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react";
 
 import classes from "../css/MainPage.module.css";
-import {GraphDisplay} from "./GraphDisplay";
+import GraphDisplay from "./GraphDisplay";
 import InstructionsPanel from "./InstructionsPanel";
 import LandingPage from "./LandingPage";
 import Options from "./Options";
@@ -15,8 +15,10 @@ const MainPage = (props) => {
     const {isMobile} = props;
 
     const instructionsRef = useRef(null);
+    const graphDisplayRef = useRef(null);
 
     const fetchGraphs = (jsonOptions) => {
+        if(isMobile) scrollIntoViewGraphSubmit();
         setLoading(true);
         setSteps(jsonOptions['iterations']);
         fetch('http://localhost:8000/api/get_qw_multiple', { 
@@ -46,6 +48,10 @@ const MainPage = (props) => {
         instructionsRef.current.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
     }
 
+    const scrollIntoViewGraphSubmit = () => {
+        graphDisplayRef.current.scrollIntoView({block: 'center', inline: 'center', behaviour: 'smooth'});
+    }
+
     if (isMobile) {
         return (
             <div className={classes.container}>
@@ -53,7 +59,7 @@ const MainPage = (props) => {
                 <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
                 <div className={classes.visualizationContainer}>
                     <Options graphHandler={fetchGraphs}/>
-                    <GraphDisplay steps={steps} loading={loading} error={errorLoading} urls={urls}/>
+                    <GraphDisplay ref={graphDisplayRef} steps={steps} loading={loading} error={errorLoading} urls={urls}/>
                 </div>
             </div>
         );

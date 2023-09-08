@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, forwardRef} from "react";
 import classes from "../css/GraphDisplay.module.css"
 import StepSlider from "./StepSlider";
 import Alert from '@mui/material/Alert';
 import LoadingIcons from 'react-loading-icons'
 
-export const GraphDisplay=(props)=>{
+const GraphDisplay = forwardRef((props, ref) => {
     const {steps} = props;
     const {urls} = props;
     const {loading} = props;
@@ -21,7 +21,6 @@ export const GraphDisplay=(props)=>{
     }
 
     const changePlot = (_, plotNum) => {
-        console.log('plotNum: '+plotNum);
         if (plotNum >= 0 && plotNum <= steps) {
             setCurrPlotNum(plotNum);
             setGraph(urls[plotNum]);
@@ -38,7 +37,7 @@ export const GraphDisplay=(props)=>{
     }, [loading]);
 
     return (
-        <div className={classes["display-container"]}>
+        <div className={classes["display-container"]} ref={ref}>
             {loadingGraph ? <LoadingIcons.Grid fill={'#3880ff'} /> :
                 error ? <Alert severity="error">Error loading image</Alert> :
                 <div className={classes.graphSliderContainer}>
@@ -52,7 +51,9 @@ export const GraphDisplay=(props)=>{
             }
         </div>
     );
-}
+});
+
+export default GraphDisplay;
 
 
 /* use for debugging single plots 
