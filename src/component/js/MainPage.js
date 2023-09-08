@@ -5,6 +5,7 @@ import GraphDisplay from "./GraphDisplay";
 import InstructionsPanel from "./InstructionsPanel";
 import LandingPage from "./LandingPage";
 import Options from "./Options";
+import QuantumResources from "./QuantumResources";
 
 const MainPage = (props) => {
     const [urls, setUrls] = useState(null);
@@ -69,6 +70,7 @@ const MainPage = (props) => {
         <div className={classes.container}>
             <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
             <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
+            <QuantumResources isMobile={isMobile}/>
             <div className={classes.visualizationContainer}>
                 <GraphDisplay steps={steps} loading={loading} error={errorLoading} urls={urls}/>
                 <Options graphHandler={fetchGraphs}/>

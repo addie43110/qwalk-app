@@ -1,0 +1,31 @@
+
+@font-face {
+    font-family: 'SourceCodePro-Black';
+    src: local('SourceCodePro-Black'), url(../fonts/SourceCodePro-Black.ttf) format('truetype');
+  }
+
+.quantumResourcesContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid blue;
+}
+
+.tile h1 {
+    font-family: 'SourceCodePro-Black';
+    font-size: large;
+}
+
+.tile {
+    height: 20vw;
+    width: 35vw;
+    border: 1px solid black;
+    margin: 10px 10px 10px 10px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
