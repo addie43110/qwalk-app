@@ -6,11 +6,13 @@ import InstructionsPanel from "./InstructionsPanel";
 import LandingPage from "./LandingPage";
 import Options from "./Options";
 
-const MainPage = () => {
+const MainPage = (props) => {
     const [urls, setUrls] = useState(null);
     const [loading, setLoading] = useState(false);
     const [errorLoading, setErrorLoading] = useState(false);
     const [steps, setSteps] = useState(null);
+
+    const {isMobile} = props;
 
     const instructionsRef = useRef(null);
 
@@ -46,7 +48,7 @@ const MainPage = () => {
 
     return (
         <div className={classes.container}>
-            <LandingPage scrollIntoView={scrollIntoView}/>
+            <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
             <InstructionsPanel ref={instructionsRef}/>
             <div className={classes.visualizationContainer}>
                 <GraphDisplay steps={steps} loading={loading} error={errorLoading} urls={urls}/>

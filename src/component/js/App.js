@@ -19,10 +19,10 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   
-  const isMobile = windowDimension <= 640;
+  const isMobile = windowDimension <= 750;
 
   return (
-    <MainPage/>
+    <MainPage isMobile={isMobile}/>
   );
 }
 

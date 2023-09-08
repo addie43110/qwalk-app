@@ -8,6 +8,10 @@
     src: local('NotoSerifAhom'), url(../fonts/NotoSerifAhom-Regular.ttf) format('truetype');
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -20,7 +24,16 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-position: center;
     position: relative;
+}
+
+@media (max-width: 750px) {
+    .container {
+        flex-direction: column;
+        height: 140vh;
+        justify-content: space-evenly;
+    }
 }
 
 .rightContainer {
@@ -37,6 +50,12 @@
     max-width: 65%;
 }
 
+@media (max-width: 750px) {
+    #qwgif {
+        max-width: 40%;
+    }
+}
+
 .rightContainer .awsbtn {
     font-family: 'SourceCodePro-Black';
     --button-default-height: 60px;
@@ -49,13 +68,27 @@
     --button-secondary-border: 2px solid #468e53;
 }
 
+@media (max-width: 750px) {
+    .rightContainer .awsbtn {
+        margin-top: 10%;
+        margin-bottom: 10%;
+        --button-default-font-size: 14px;
+    }
+}
+
 .textcontainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    margin-left: 5%;
+    align-items: center;
     width: 55%;
+}
+
+@media (min-width: 750px) {
+    .textcontainer {
+        align-items: flex-start;
+        margin-left: 5%;
+    }
 }
 
 .title {
@@ -67,6 +100,12 @@
     margin-top: 10%;
 }
 
+@media (max-width: 750px) {
+    .title {
+        margin-top: 0;
+    }
+}
+
 .title h1 {
     text-align: center;
     font-size: xxx-large;
@@ -76,6 +115,15 @@
 .title h2, h3 {
     font-family: 'NotoSerifAhom';
     font-size: medium;
+}
+
+@media (max-width: 750px) {
+    .title h1 {
+        font-size: x-large;
+    }
+    .title h2, h3 {
+        font-size: small;
+    }
 }
 
 .title h2 {
@@ -90,10 +138,23 @@
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    width: 50%;
-    margin-left: 10%;
+    justify-content: center;
+    width: 45px;
+    align-items: center;
     font-family: 'SourceCodePro-Black';
+    font-size: small;
+    margin-bottom: 20%;
+}
+
+@media (min-width: 750px) {
+    .resources {
+        width: 50%;
+        margin-left: 10%;
+        justify-content: flex-start;
+        font-size: medium;
+        align-items: flex-start;
+        margin-bottom: 0%;
+    }
 }
 
 .icons {
@@ -102,6 +163,12 @@
     justify-content: flex-start;
     align-items: center;
     gap: 5%;
+}
+
+@media (max-width: 750px) {
+    .icons {
+        flex-direction: column;
+    }
 }
 
 /*.icons .scicon {
