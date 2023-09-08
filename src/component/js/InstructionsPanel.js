@@ -40,7 +40,7 @@ const InstructionsPanel = forwardRef((props, ref) => {
                 <div className={classes.textblock}>
                     <h1 id={styles.dev}>Development</h1>
                     <p>Research on quantum walks and their implementations is currently in developement. As a result, the 
-                        probabilities given for quantum walks on a cube by the simulator <b>are not correct</b>. Please
+                        probabilities given for quantum walks on a cube by the simulator <b>are purposefully skewed</b>. Please
                         note this when viewing the graphs created.
                     </p>
                 </div>
