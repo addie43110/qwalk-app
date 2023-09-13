@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 50px;
   }
 
 .quantumResourcesContainer {
@@ -28,13 +29,13 @@
 
 @media (max-width: 750px) {
     .quantumResourcesContainer {
-        height: 50vh;
+        height: 60vh;
     }
 }
 
 @media (max-width: 375px) {
     .quantumResourcesContainer {
-        height: 35vh;
+        height: 45vh;
     }
 }
 
@@ -77,14 +78,14 @@
 
 @media (max-width: 750px) {
     .tile {
-        height: 20vh;
+        height: 25vh;
         width: 35vw;
     }
 }
 
 @media (max-width:375px) {
     .tile {
-        height: 15vh;
+        height: 20vh;
         width: 39vw;
         margin: 5px 5px 5px 5px;
     }

@@ -1,3 +1,9 @@
+
+@font-face {
+    font-family: 'SourceCodePro-Black';
+    src: local('SourceCodePro-Black'), url(../fonts/SourceCodePro-Black.ttf) format('truetype');
+}
+
 html,body {
     overflow-x: hidden;
 }
@@ -25,4 +31,9 @@ html,body {
     .visualizationContainer { 
         flex-direction: column;
     }
+}
+
+#visualizerHeader {
+    font-family: 'SourceCodePro-Black';
+    padding-bottom: 20px;
 }

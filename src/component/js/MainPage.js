@@ -1,11 +1,13 @@
 import React, {useState, useRef} from "react";
 
-import classes from "../css/MainPage.module.css";
 import GraphDisplay from "./GraphDisplay";
 import InstructionsPanel from "./InstructionsPanel";
 import LandingPage from "./LandingPage";
 import Options from "./Options";
 import QuantumResources from "./QuantumResources";
+
+import classes from "../css/MainPage.module.css";
+import styles from "../css/MainPage.module.css";
 
 const MainPage = (props) => {
     const [urls, setUrls] = useState(null);
@@ -59,6 +61,7 @@ const MainPage = (props) => {
                 <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
                 <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
                 <QuantumResources/>
+                <h1 id={styles.visualizerHeader}>Visualizer</h1>
                 <div className={classes.visualizationContainer}>
                     <Options graphHandler={fetchGraphs}/>
                     <GraphDisplay ref={graphDisplayRef} steps={steps} loading={loading} error={errorLoading} urls={urls}/>
@@ -72,6 +75,7 @@ const MainPage = (props) => {
             <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
             <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
             <QuantumResources/>
+            <h1 id={styles.visualizerHeader}>Visualizer</h1>
             <div className={classes.visualizationContainer}>
                 <GraphDisplay steps={steps} loading={loading} error={errorLoading} urls={urls}/>
                 <Options graphHandler={fetchGraphs}/>
