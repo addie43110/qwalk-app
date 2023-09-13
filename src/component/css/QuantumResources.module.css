@@ -17,25 +17,18 @@
     flex-wrap: wrap;
     align-content: center;
     width: 100vw;
-    height: 50vh;
-}
-
-@media (min-width: 850px) {
-    .quantumResourcesContainer {
-        height: 60vh;
-        width: 100vw;
-    }
+    height: 340px;
 }
 
 @media (max-width: 750px) {
     .quantumResourcesContainer {
-        height: 60vh;
+        height: 410px;
     }
 }
 
 @media (max-width: 375px) {
     .quantumResourcesContainer {
-        height: 45vh;
+        height: 350px;
     }
 }
 
@@ -61,31 +54,25 @@
 }
 
 .tile {
-    height: 20vh;
-    width: 35vw;
+    height: 140px;
+    width: 30vw;
     border-radius: 20px;
     margin: 10px 10px 10px 10px;
     padding-left: 20px;
     padding-right: 10px;
 }
 
-@media (min-width: 850px) {
-    .tile {
-        height: 25vh;
-        width: 30vw;
-    }
-}
 
 @media (max-width: 750px) {
     .tile {
-        height: 25vh;
+        height: 180px;
         width: 35vw;
     }
 }
 
 @media (max-width:375px) {
     .tile {
-        height: 20vh;
+        height: 160px;
         width: 39vw;
         margin: 5px 5px 5px 5px;
     }
