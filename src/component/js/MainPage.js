@@ -58,7 +58,7 @@ const MainPage = (props) => {
             <div className={classes.container}>
                 <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
                 <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
-                <QuantumResources isMobile={isMobile}/>
+                <QuantumResources/>
                 <div className={classes.visualizationContainer}>
                     <Options graphHandler={fetchGraphs}/>
                     <GraphDisplay ref={graphDisplayRef} steps={steps} loading={loading} error={errorLoading} urls={urls}/>
@@ -71,7 +71,7 @@ const MainPage = (props) => {
         <div className={classes.container}>
             <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
             <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
-            <QuantumResources isMobile={isMobile}/>
+            <QuantumResources/>
             <div className={classes.visualizationContainer}>
                 <GraphDisplay steps={steps} loading={loading} error={errorLoading} urls={urls}/>
                 <Options graphHandler={fetchGraphs}/>

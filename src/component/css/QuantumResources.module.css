@@ -21,7 +21,7 @@
 
 @media (min-width: 850px) {
     .quantumResourcesContainer {
-        height: 50vh;
+        height: 60vh;
         width: 100vw;
     }
 }
@@ -45,7 +45,7 @@
 }
 
 .tile h1, .tile p {
-    font-size: large;
+    font-size: medium;
     color: white;
 }
 
@@ -70,8 +70,8 @@
 
 @media (min-width: 850px) {
     .tile {
-        height: 20vh;
-        width: 20vw;
+        height: 25vh;
+        width: 30vw;
     }
 }
 
