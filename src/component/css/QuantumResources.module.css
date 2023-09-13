@@ -1,0 +1,128 @@
+
+@font-face {
+    font-family: 'SourceCodePro-Black';
+    src: local('SourceCodePro-Black'), url(../fonts/SourceCodePro-Black.ttf) format('truetype');
+  }
+
+  .resourcesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+  }
+
+.quantumResourcesContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 100vw;
+    height: 340px;
+}
+
+@media (max-width: 750px) {
+    .quantumResourcesContainer {
+        height: 410px;
+    }
+}
+
+@media (max-width: 375px) {
+    .quantumResourcesContainer {
+        height: 350px;
+    }
+}
+
+.resourcesContainer h1 {
+    font-family: 'SourceCodePro-Black';
+    font-size: xx-large;
+    color: black;
+}
+
+.tile h1, .tile p {
+    font-size: medium;
+    color: white;
+}
+
+:root {
+    --tile-colour: #2d7b5c;
+    --YELLOW: #efc519;
+    --ORANGE: #ee7526;
+    --RED: #ef4255;
+    --ROBIN_BLUE: #52c5d8;
+    --SKY_BLUE: #277ec3;
+    --NAVY: #262f6a;
+}
+
+.tile {
+    height: 140px;
+    width: 30vw;
+    border-radius: 20px;
+    margin: 10px 10px 10px 10px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+
+@media (max-width: 750px) {
+    .tile {
+        height: 180px;
+        width: 35vw;
+    }
+}
+
+@media (max-width:375px) {
+    .tile {
+        height: 160px;
+        width: 39vw;
+        margin: 5px 5px 5px 5px;
+    }
+
+    .tile p, .tile h1 {
+        font-size: small;
+    }
+}
+
+#tile1 {
+    background-color: var(--SKY_BLUE);
+}
+
+#tile2 {
+    background-color: var(--YELLOW);
+}
+
+#tile3 {
+    background-color: var(--RED);
+}
+
+#tile4 {
+    background-color: var(--ROBIN_BLUE);
+}
+
+#tile1:hover, #tile2:hover, #tile3:hover, #tile4:hover {
+    background-color: white;
+}
+#tile1:active {
+    background-color: var(--SKY_BLUE);
+}
+#tile2:active {
+    background-color: var(--YELLOW);
+}
+#tile3:active {
+    background-color: var(--RED);
+}
+#tile4:active {
+    background-color: var(--ROBIN_BLUE);
+}
+#tile1:active, #tile2:active, #tile3:active, #tile4:active {
+    transform: scale(1.00);
+}
+
+.tile:hover {
+    transition-duration: 0.2s;
+    transform: scale(1.02);
+    border: 2px solid black;
+}
+
+.tile:hover h1, .tile:hover p {
+    color:black;
+}
