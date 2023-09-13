@@ -58,6 +58,7 @@ const MainPage = (props) => {
             <div className={classes.container}>
                 <LandingPage scrollIntoView={scrollIntoView} isMobile={isMobile}/>
                 <InstructionsPanel ref={instructionsRef} isMobile={isMobile}/>
+                <QuantumResources isMobile={isMobile}/>
                 <div className={classes.visualizationContainer}>
                     <Options graphHandler={fetchGraphs}/>
                     <GraphDisplay ref={graphDisplayRef} steps={steps} loading={loading} error={errorLoading} urls={urls}/>
