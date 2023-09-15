@@ -24,7 +24,7 @@ const MainPage = (props) => {
         if(isMobile) scrollIntoViewGraphSubmit();
         setLoading(true);
         setSteps(jsonOptions['iterations']);
-        fetch('http://localhost:8000/api/get_qw_multiple', { 
+        fetch('http://0.0.0.0:8000/api/get_qw_multiple', { 
           method: 'POST', 
           mode: 'cors', 
           body: JSON.stringify(jsonOptions) 
