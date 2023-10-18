@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightblue;
+    background-color: white;
     height: 45vw;
     width: 45vw;
     border-radius: 5px;
@@ -16,7 +16,6 @@
 }
 
 .display img {
-    height: 100%;
     width: 100%;
 }
 
